@@ -21,5 +21,6 @@ int main()
     cout << "ans is : " << ans << endl;
     return 0;
 }
-
+// ⏲️ Time complexity --=-> O(logn) ---> because we are dividing n/26 every time
+// 🛢️ Space complexity -> O(1)
 
