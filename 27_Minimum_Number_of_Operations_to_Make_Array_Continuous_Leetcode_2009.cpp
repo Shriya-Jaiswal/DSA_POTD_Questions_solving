@@ -63,7 +63,7 @@ int minOperations(vector<int>& nums) {
         ans = min(ans, n - (end_index - start));
     }
     return ans;
-}
+} 
 
 int main()
 {
