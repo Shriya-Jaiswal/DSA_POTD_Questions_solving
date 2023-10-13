@@ -9,37 +9,44 @@ class Node{
         int data;
         Node* left;
         Node* right;
-
+    
     Node(int data){
         this -> data = data;
-        left = NULL;
-        right = NULL;
+        this -> left = NULL;
+        this -> right = NULL;
     }
 };
 
-Node* buildTree(){
-
-    int data;
-    cout <<"Enter root data " << endl;
-    cin >> data;
-
-     if(data == -1){
-        return NULL;
+Node* insertIntoBST(Node* root, int data){
+    if(root == NULL){
+        // 👉 this is the firt node we have to create 
+        root = new Node(data);
+        return root;
     }
 
-    // 👉 1 case solve
-    Node* root = new Node(data);
-
-    cout << "Enter data for left child of : "<< endl;
-    root -> left = buildTree();
-
-    cout << "Enter data for right child of : "<< endl;
-    root -> right = buildTree();
-
+    // 👉 not the first node
+    if(root -> data > data){
+        // 👉 insert in left
+        root -> left = insertIntoBST(root -> left, data);
+    }
+    else{
+        // 👉 insert in right
+        root -> right = insertIntoBST(root -> right, data);
+    }
     return root;
 }
 
-void levelOrderTraversalLikeTree(Node* root ) {
+void takeInput(Node* &root){
+    int data;
+    cin >> data;
+
+    while(data != -1){
+        root = insertIntoBST(root,data);
+        cin >> data;
+    }
+}
+
+void levelOrderTraversal(Node* root ) {
 	queue<Node*> q;
 	//initially
 	q.push(root);
@@ -67,9 +74,11 @@ void levelOrderTraversalLikeTree(Node* root ) {
 			if(temp ->right) {
 				q.push(temp->right);
 			}
-		}
+		}		
 	}
 }
+
+
 
 
 int floor(Node* root, int x) {
@@ -95,14 +104,19 @@ int floor(Node* root, int x) {
 int main()
 {
     Node* root = NULL;
-    root = buildTree();
-    levelOrderTraversalLikeTree(root);
+    cout << "enter the data for Node : " << endl;
+    takeInput(root);
+
+    cout << "printing the tree : " << endl;
+    levelOrderTraversal(root);
+
     int x = 87;
     int ans = floor(root,x);
     cout << "ans is : " << ans << endl;
     return 0;
 }
 
-// 2 -1 81 42 -1 66 45 -1 -1 -1 87 -1 90 -1 -1 
+// 2 81 42 66 45 87 90 -1
 
-// 6 -1 8 7 -1 -1 9 -1 -1
+// 6 8 7 9 -1
+
