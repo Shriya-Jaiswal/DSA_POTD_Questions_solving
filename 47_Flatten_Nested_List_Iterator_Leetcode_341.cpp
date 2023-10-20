@@ -3,6 +3,8 @@
 #include<queue>
 using namespace std;
 
+// ▶️ google, uber, Linkedin, Apple, facebook,Airbnb, Twitter, Amazon, salesforce
+
 class NestedIterator {
 public:
     queue<int> q;
