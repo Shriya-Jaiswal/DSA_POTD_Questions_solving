@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+// ▶️ Ask by ---> Paytm , VMWare, Zoho , Amazon , Microsoft
+
 void frequencyCount(vector<int>& arr,int N, int P)
 { 
     int i=0;
