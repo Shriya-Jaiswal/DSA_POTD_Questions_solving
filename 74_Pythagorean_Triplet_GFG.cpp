@@ -4,6 +4,8 @@
 #include<math.h>
 using namespace std;
 
+// ▶️ Ask by ---> Amazon Adobe 
+
 bool checkTriplet(int arr[], int n) {
 	 int maximum = *max_element(arr, arr + n);
 	    vector<bool> squares(maximum + 1, false);
