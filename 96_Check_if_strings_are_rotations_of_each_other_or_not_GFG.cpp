@@ -2,8 +2,8 @@
 #include<vector>
 using namespace std;
 
-
-//Function to check if two strings are rotations of each other or not.
+// ▶️ Ask by --> Oracle , Adobe
+// 👉 Function to check if two strings are rotations of each other or not.
 bool areRotations(string s1,string s2){
     string ans=s1;
     int n1=s1.length();
