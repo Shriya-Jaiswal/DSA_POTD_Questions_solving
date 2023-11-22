@@ -69,6 +69,4 @@ int main()
     cout << "ans is : " << ans << endl;
     return 0;
 }
-
-
 // 5 1 2 -1 -1 -1 1 -1 2 -1 -1 
