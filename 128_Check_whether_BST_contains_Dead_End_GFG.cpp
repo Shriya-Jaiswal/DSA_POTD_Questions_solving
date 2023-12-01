@@ -96,16 +96,17 @@ bool isDeadEnd(Node *root){
     if(!root) return true;
     unordered_set<int> st, leafset;
     st.insert(0);
-    storeNodes(root, st, leafset);
-        
+    storeNodes(root, st, leafset);   
     for (auto it: leafset){
     auto x =it;
     if (st.find(x+1) != st.end() && st.find(x-1) != st.end())
         return true;
-    }
-        
+    }       
     return false ;
 }
+
+// ⏲️ Expected Time Complexity: O(N), where N is the number of nodes in the BST.
+// 🛢️ Expected Space Complexity: O(N)
 
 int main()
 {
