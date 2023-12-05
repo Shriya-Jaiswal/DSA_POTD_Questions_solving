@@ -19,7 +19,6 @@ int getMinDiff(int arr[], int n, int k) {
     }
     return ans;
 }
-
 // ⏲️ Expected Time Complexity: O(N*logN)
 // 🛢️ Expected Auxiliary Space: O(N)
 
