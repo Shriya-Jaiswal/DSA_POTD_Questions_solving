@@ -40,44 +40,68 @@ Node* buildTree(){
 }
 
 
-// ▶️ Approach-1 (Brute Force) - O(n^2) - n = number of nodes in the Tree
-/*
-  Just simply take a root, find all the differences of it from its childres and find max one
-  Again go to root->left and do the same as above
-  Again go to root->right and do the same as above
-*/
+// // ▶️ Approach-1 (Brute Force) - O(n^2) - n = number of nodes in the Tree
+// /*
+//   Just simply take a root, find all the differences of it from its childres and find max one
+//   Again go to root->left and do the same as above
+//   Again go to root->right and do the same as above
+// */
 
-int maxDiff;
+// int maxDiff;
 
-void findMaxUtil(Node* root, Node* child) {
-    if(!root || !child)
-        return;
+// void findMaxUtil(Node* root, Node* child) {
+//     if(!root || !child)
+//         return;
         
-    maxDiff = max(maxDiff, abs(root->data - child->data));
+//     maxDiff = max(maxDiff, abs(root->data - child->data));
 
-    findMaxUtil(root, child->left);
-    findMaxUtil(root, child->right);
-}
+//     findMaxUtil(root, child->left);
+//     findMaxUtil(root, child->right);
+// }
 
-void findMaxDiff(Node* root) {
-    if(!root || !root->left && !root->right)
-        return;
+// void findMaxDiff(Node* root) {
+//     if(!root || !root->left && !root->right)
+//         return;
          
-        //Find max differences of this root with all its children
-        findMaxUtil(root, root->left);
-        findMaxUtil(root, root->right);
+//         //Find max differences of this root with all its children
+//         findMaxUtil(root, root->left);
+//         findMaxUtil(root, root->right);
 
-        //firther move left and right
-        findMaxDiff(root->left);
-        findMaxDiff(root->right);
+//         //firther move left and right
+//         findMaxDiff(root->left);
+//         findMaxDiff(root->right);
+// }
+
+// int maxAncestorDiff(Node* root) {
+//     maxDiff = INT_MIN;
+
+//     findMaxDiff(root);   
+
+//     return maxDiff;     
+// }
+
+// ◀️ Approach-2
+// ➡️ Optimal (O(n)) using min and max value for |min-max|
+
+int findMaxDiff(Node* root, int minV, int maxV) {
+    if(!root)
+        return abs(minV-maxV);
+        
+    minV = min(root->data, minV);
+    maxV = max(root->data, maxV);
+
+    int l = findMaxDiff(root->left,  minV, maxV);
+    int r = findMaxDiff(root->right, minV, maxV);
+
+    return max(l, r);
 }
 
 int maxAncestorDiff(Node* root) {
-    maxDiff = INT_MIN;
+    int minV = root->data;
+    int maxV = root->data;
 
-    findMaxDiff(root);   
-
-    return maxDiff;     
+    return findMaxDiff(root, minV, maxV);
+   
 }
 
 int main()
