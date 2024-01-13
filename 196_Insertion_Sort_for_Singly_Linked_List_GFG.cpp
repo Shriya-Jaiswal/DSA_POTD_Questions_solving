@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+// ▶️ Ask by : Microsoft
+
 class Node{
     public:
         int data;
@@ -97,6 +99,10 @@ Node* insertionSort(struct Node* head_ref)
 }
     return faltu->next;
 }
+
+// ⏲️ Expected Time Complexity : O(n2)
+// 🛢️ Expected Auxiliary Space : O(1)
+
 
 int main()
 {
