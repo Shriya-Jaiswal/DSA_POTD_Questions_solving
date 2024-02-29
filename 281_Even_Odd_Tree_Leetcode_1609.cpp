@@ -4,7 +4,7 @@
 #include<limits.h>
 using namespace std;
 
-
+// ▶️ Ask by :  JPMorgan ✯   Bloomberg ✯  
 
 class Node {
         public:
@@ -156,7 +156,7 @@ bool isEvenOddTree(Node* root) {
 
 int main()
 {
-     Node* root = NULL;
+    Node* root = NULL;
 	cout << "Enter the data for Node " << endl;
 	takeInput(root);
 	cout << "Printing the tree" << endl;
