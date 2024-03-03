@@ -3,6 +3,8 @@
 #include<algorithm>
 using namespace std;
 
+// ▶️ Ask by : Paytm | Zoho | Amazon | Microsoft | MakeMyTrip
+
 static bool compare(const string &a, const string &b) {
     return (a + b) > (b + a);
 }
