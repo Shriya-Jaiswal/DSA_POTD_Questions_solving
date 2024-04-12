@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+// ▶️ Ask by :  Amazon ✯   Goldman Sachs ✯   Facebook ✯   Bloomberg ✯   Microsoft ✯   Google   Apple   Adobe   Uber   Qualtrics   Rubrik   Snapchat   Intel   Oracle   Paypal   Tesla   Intuit   Citadel   Visa   ServiceNow   National Instruments   Sapient  
+
+// ⏲️ Time Complexity : O(n)
+// 🛢️ Space Complexity : O(n)
+
+vector<int> getLeftMax(vector<int>& height, int n) {
+    vector<int> leftMax(n);
+    leftMax[0] = height[0];
+    for(int i = 1; i<n; i++) {
+        leftMax[i] = max(leftMax[i-1], height[i]);
+       }
+    return leftMax;
+}
+vector<int> getRightMax(vector<int>& height, int n) {
+    vector<int> rightMax(n);
+    rightMax[n-1] = height[n-1];
+    for(int i = n-2; i>=0; i--) {
+        rightMax[i] = max(rightMax[i+1], height[i]);
+    }
+    return rightMax;
+} 
+int trap(vector<int>& height) {
+    int n = height.size();
+    if(n == 1 || n == 0){
+        return 0;
+    }
+    vector<int> leftMax = getLeftMax(height, n);
+    vector<int> rightMax = getRightMax(height, n);
+    int sum = 0;
+    for(int i = 0; i<n; i++) {
+        sum += min(leftMax[i], rightMax[i]) - height[i];
+    }
+    return sum;
+}
+
+int main()
+{
+    vector<int> height = {0,1,0,2,1,0,1,3,2,1,2,1};
+    int ans = trap(height);
+    cout << "ans is : " << ans << endl;
+    return 0;
+}
