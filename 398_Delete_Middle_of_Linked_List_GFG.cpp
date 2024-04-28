@@ -74,13 +74,16 @@ void insertAtTail(Node* &head , Node* &tail, int data){
 
 
 // ▶️ Ask by : Flipkart | Amazon | Microsoft
-
-Node* deleteMid(Node* head){
+Node* deleteMid(Node* head)
+{
     Node* fast=head, *slow=head, *prev=NULL;
-       while(fast && fast->next){
+    while(fast && fast->next){
         fast=fast->next->next;
         prev=slow;
         slow=slow->next;
+    }
+    if(head->next == NULL){
+        return NULL;
     }
         
     prev->next=slow->next;
