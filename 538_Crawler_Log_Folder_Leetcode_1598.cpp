@@ -1,27 +1,49 @@
 #include<iostream>
 #include<vector>
+#include<stack>
 using namespace std;
 
-// ▶️ Ask by :  Mercari ✯  GOOGLE
+// // ▶️ Ask by :  Mercari ✯  GOOGLE
 
-// ▶️ Approach-1 (Using simple simulation)
+// // ▶️ Approach-1 (Using simple simulation)
+// // ⏲️ Time Complexity : O(n)
+// // 🛢️ Space Complexity : O(1)
+
+// int minOperations(vector<string>& logs) {
+//     int depth = 0;
+
+//     for(string &s : logs) {
+//         if(s == "../") {
+//             depth = max(0, depth-1);
+//         } else if(s == "./") {
+//              continue;
+//         } else {
+//             depth++;
+//         }
+//     }
+
+//     return depth;
+// }
+
+
+// ▶️ Approach-2 (Using Stack for simulation)
 // ⏲️ Time Complexity : O(n)
-// 🛢️ Space Complexity : O(1)
+// 🛢️ Space Complexity : O(n)
 
 int minOperations(vector<string>& logs) {
-    int depth = 0;
+    stack<string> st;
 
-    for(string &s : logs) {
-        if(s == "../") {
-            depth = max(0, depth-1);
-        } else if(s == "./") {
-             continue;
-        } else {
-            depth++;
+    for (const string& currentOperation : logs) {
+        if (currentOperation == "../") {
+            if (!st.empty()) {
+                st.pop();
+            }
+        } else if (currentOperation != "./") {
+            st.push(currentOperation);
         }
     }
 
-    return depth;
+    return st.size();
 }
 
 int main()
